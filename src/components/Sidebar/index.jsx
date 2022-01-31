@@ -23,27 +23,27 @@ export default function index() {
       <h3 className="mx-6 text-xs text-gray-600 font-bold uppercase tracking-widest mb-3">School Planner</h3>
 
       <Link to = "/" 
-      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-400 group font-semibold'>
+      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-300 group font-semibold'>
         <AiOutlineHome/>
         Overview  
       </Link>
       <Link to = "/agenda" 
-      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-400 group font-semibold'>
+      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-300 group font-semibold'>
         <MdOutlineViewAgenda/>
         Agenda
       </Link>
       <Link to = "/assignments" 
-      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-400 group font-semibold'>
+      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-300 group font-semibold'>
         <MdOutlineAssignment/>
         Assignment 
       </Link>
       <Link to = "/exams" 
-      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-400 group font-semibold'>
+      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-300 group font-semibold'>
         <BsPen/>
         Exams  
       </Link>
       <Link to = "/tasks" 
-      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-400 group font-semibold'>
+      className='flex items-center gap-2 px-6 py-2.5 text-gray-800 hover:bg-green-300 group font-semibold'>
         <MdTaskAlt/>
         Tasks  
       </Link>
