@@ -1,9 +1,11 @@
 import React from 'react'
+import MainWrapper from '../../components/MainWrapper'
+
 
 export default function index() {
   return (
-    <div>
-        <h1>Subjects</h1>
-    </div>
+    <MainWrapper>
+        <h1>Semesters</h1>
+    </MainWrapper>
   )
 }

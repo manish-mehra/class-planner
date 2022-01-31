@@ -1,9 +1,11 @@
 import React from 'react'
+import MainWrapper from '../../components/MainWrapper'
+
 
 export default function index() {
   return (
-    <div>
+    <MainWrapper>
         <h1>Agenda</h1>
-    </div>
+    </MainWrapper>
   )
 }
