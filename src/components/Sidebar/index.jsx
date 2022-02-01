@@ -13,7 +13,7 @@ export default function index() {
 
   
   return (
-    <div className='w-64 bg-green-200 border-r border-gray-200'> 
+    <div className='w-76 bg-green-200 border-r border-gray-200 p-4'> 
       <div className="py-4 px-6">
         <a href="/">
           <p className='w-full h-9'>Logo</p>
