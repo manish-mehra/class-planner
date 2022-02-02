@@ -5,10 +5,10 @@ import {GrAdd} from 'react-icons/gr'
 
 export default function Header() {
   return (
-      <div className='flex-col'>
+      <div className='flex-col mt-14'>
           {/* top section */}
         <div className='flex justify-between items-center'>
-            <h1 className='text-4xl font-bold text-gray-700'>Tasks</h1>
+            <h1 className='text-lg font-semibold text-gray-700'>Tasks</h1>
             
             <div className='flex items-center  justify-between'>
                 

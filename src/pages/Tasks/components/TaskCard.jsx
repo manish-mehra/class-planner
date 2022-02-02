@@ -4,7 +4,7 @@ import {BsFlag} from 'react-icons/bs'
 
 export default function TaskCard() {
   return(
-    <div className='flex justify-between pb-4 border border-transparent border-b-gray-300'>
+    <div className='flex justify-between mt-2 pb-4 border border-transparent border-b-gray-300'>
         
         <div className='flex-col'>
 

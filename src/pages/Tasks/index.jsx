@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from './components/header'
-import TaskCard from './components/TaskCard'
+import Header from './components/Header'
+import Main from './components/Main'
 
 export default function index() {
   return (
     <>
         <Header/>
-        <TaskCard/>
+        <Main/>
     </>
   )
 }
