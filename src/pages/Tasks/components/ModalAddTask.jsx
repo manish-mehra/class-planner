@@ -1,12 +1,16 @@
 // Add Task Modal Component
 
-import React from 'react'
+import {useState} from 'react'
 import {AiOutlineSchedule} from 'react-icons/ai'
 import {MdOutlineLabel} from 'react-icons/md'
 import {BsFlag} from 'react-icons/bs'
 
+
+import Label from './Label'
+
 export default function ModalAddTask({showModal}) {
 
+    const [showLabel, setShowLabel] = useState(false)
 
   return (
       <div 
@@ -38,8 +42,12 @@ export default function ModalAddTask({showModal}) {
                         </div>
 
                         <div className='flex gap-2'>
-                            <span className='hover:bg-green-200 p-1 rounded-sm cursor-pointer'>
+                            <span 
+                            className='hover:bg-green-200 p-1 rounded-sm cursor-pointer relative'
+        
+                            >
                                 <MdOutlineLabel/>
+                                <Label/>
                             </span>
                             <span className='p-1 hover:bg-green-200 rounded-sm cursor-pointer'>
                                 <BsFlag/>
