@@ -5,7 +5,7 @@ import {FiFilter} from 'react-icons/fi'
 import {GrAdd} from 'react-icons/gr'
 
 //import components
-import AddTask from './AddTask'
+import ModalAddTask from './ModalAddTask'
 
 export default function Header() {
 
@@ -17,7 +17,7 @@ export default function Header() {
         {
             addTask? 
                 <div>
-                    <AddTask showModal = {setAddTask}/>
+                    <ModalAddTask showModal = {setAddTask}/>
                 </div>
             : null
         }
