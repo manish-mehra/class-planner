@@ -16,7 +16,7 @@ export default function Main() {
         <ul>
             {
                 tasks.map((task)=>
-                    <li>
+                    <li key={task}>
                         <TaskCard/>
                     </li>
                 )

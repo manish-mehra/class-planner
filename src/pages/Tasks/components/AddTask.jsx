@@ -4,6 +4,8 @@ import {AiOutlineSchedule} from 'react-icons/ai'
 import {MdOutlineLabel} from 'react-icons/md'
 import {BsFlag} from 'react-icons/bs'
 
+import Label from './Label'
+
 export default function AddTask() {
     
     return(
@@ -27,13 +29,10 @@ export default function AddTask() {
                     </span>
                 </div>
 
-                <div className='flex gap-2'>
-                    <span className='hover:bg-green-200 p-1 rounded-sm cursor-pointer'>
-                        <MdOutlineLabel/>
-                    </span>
-                    <span className='p-1 hover:bg-green-200 rounded-sm cursor-pointer'>
+                <div className='flex gap-3 items-center'>
+                        <Label/>
                         <BsFlag/>
-                    </span>
+
                 </div>
           </section>
 

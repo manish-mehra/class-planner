@@ -1,94 +1,44 @@
+
 import {useState, useEffect} from 'react'
 
 import {MdOutlineLabel} from 'react-icons/md'
 import {GrAdd} from 'react-icons/gr'
 
-const labelList = [
-  {
-    id: 1,
-    name: "history",
-  },
-  {
-    id: 2,
-    name: "english",
-  },
-  {
-    id: 3,
-    name: "maths",
-  }
-]
+
+/* This example requires Tailwind CSS v2.0+ */
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import LabelDropdown from './LabelDropdown'
+
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function Label() {
-
-  const [labels, setLabels] = useState(labelList)
-  const [enteredLabel, setEnteredLabel] = useState('')
-
-  let filteredLabel
-
-  useEffect(()=>{
-    filteredLabel = labels.map((item)=>item.name)
-  }, [labels])
-
-  const createLabelHandler = (newLabel)=>{
-    setLabels((prev)=>[...labels, newLabel])
-    setEnteredLabel("")
-  }
-
-  
- 
   return (
+    <Menu as="div" className="relative inline-block text-left">
+      <div>
+        <Menu.Button className="inline-flex justify-center w-full shadow-sm  bg-white text-sm font-medium text-gray-700 hover:bg-green-200 outline-none">
+          <MdOutlineLabel/>
+        </Menu.Button>
+      </div>
 
-         <div className='flex-col absolute top-5 right-1/3'>
-      
-         <section>
-           <input 
-           type="text" 
-           onChange={(e)=>setEnteredLabel(e.target.value)}
-           value={enteredLabel}
-           className='border border-2 border-b-gray-700'
-           />
-         </section>
-   
-        <section>
-          {/* if entered label is empty, then show whole list,  */}
-          {
-             enteredLabel.includes(filteredLabel) || enteredLabel === ""?
-             <ul>
-               {
-                 labels.map((item)=>
-                   <li key = {item.id} className='flex items-center justify-between'>
-                     <span className='flex items-center gap-1'>
-                       <MdOutlineLabel/>
-                       <p>{item.name}</p>
-                     </span>
-                     <span>
-                       <input type="checkbox" name="label"/>
-                     </span>
-                   </li>
-                 )
-               }
-             </ul>
-             :
-             <div>
-               <ul>
-                 <li>
-                   <p>Lable not found</p>
-                 </li>
-                 
-                 <li className='flex items-center gap-2' 
-                 onClick={()=>createLabelHandler({
-                   id: 4,
-                   name: enteredLabel
-                 })}>
-                 <GrAdd/>
-                   <p>Create "{enteredLabel}"</p>
-                 </li>
-               </ul>
-             </div>
-   
-          }
-        </section>
-   
-       </div>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="origin-top-left -right-1 absolute  mt-2 w-64 rounded-md shadow-lg bg-white border border-gray-200">
+          <div>
+           <LabelDropdown/>
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   )
 }

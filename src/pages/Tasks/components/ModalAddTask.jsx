@@ -34,24 +34,18 @@ export default function ModalAddTask({showModal}) {
                 </section>
 
                 <section className='flex justify-between items-center mb-2'>
-                        <div className='hover:bg-green-200 p-1 rounded-md border border-gray-300 cursor-pointer'>
-                            <span className='flex items-center gap-1'>
+                        <div>
+                            <span className='flex items-center gap-1 hover:bg-green-200 p-1 rounded-md border border-gray-300 cursor-pointer'>
                                 <AiOutlineSchedule/>
-                                <p className='text-xs font-semibold'>Schedule</p>
+                                <p className='text-xs font-semibold'>Schedule</p>                                
                             </span>
                         </div>
 
-                        <div className='flex gap-2'>
-                            <span 
-                            className='hover:bg-green-200 p-1 rounded-sm cursor-pointer relative'
+                        <div className='flex gap-3 items-center'>
+                            
+                            <Label/>
+                            <BsFlag/>
         
-                            >
-                                <MdOutlineLabel/>
-                                <Label/>
-                            </span>
-                            <span className='p-1 hover:bg-green-200 rounded-sm cursor-pointer'>
-                                <BsFlag/>
-                            </span>
                         </div>
                 </section>
             </div>
