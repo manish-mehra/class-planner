@@ -7,6 +7,7 @@ import {BsFlag} from 'react-icons/bs'
 
 
 import Label from './Label'
+import DatePickerButton from './DatePickerButton'
 
 export default function ModalAddTask({showModal}) {
 
@@ -33,20 +34,13 @@ export default function ModalAddTask({showModal}) {
                         />
                 </section>
 
-                <section className='flex justify-between items-center mb-2'>
-                        <div>
-                            <span className='flex items-center gap-1 hover:bg-green-200 p-1 rounded-md border border-gray-300 cursor-pointer'>
-                                <AiOutlineSchedule/>
-                                <p className='text-xs font-semibold'>Schedule</p>                                
-                            </span>
-                        </div>
+                <section className='flex justify-between items-center mb-2'>                    
+                        <DatePickerButton/>
+                    <div className='flex gap-3 items-center'>                        
+                        <Label/>
+                        <BsFlag/>
+                    </div>
 
-                        <div className='flex gap-3 items-center'>
-                            
-                            <Label/>
-                            <BsFlag/>
-        
-                        </div>
                 </section>
             </div>
 

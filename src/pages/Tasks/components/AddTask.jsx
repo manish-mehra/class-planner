@@ -5,6 +5,7 @@ import {MdOutlineLabel} from 'react-icons/md'
 import {BsFlag} from 'react-icons/bs'
 
 import Label from './Label'
+import DatePickerButton from './DatePickerButton'
 
 export default function AddTask() {
     
@@ -22,18 +23,11 @@ export default function AddTask() {
           </section>
 
           <section className='flex justify-between mt-3 items-center'>
-                <div className='hover:bg-green-200 p-1 rounded-md border border-gray-300 cursor-pointer'>
-                    <span className='flex items-center gap-1'>
-                        <AiOutlineSchedule/>
-                        <p className='text-xs font-semibold'>Schedule</p>
-                    </span>
-                </div>
-
-                <div className='flex gap-3 items-center'>
-                        <Label/>
-                        <BsFlag/>
-
-                </div>
+                        <DatePickerButton/>
+                    <div className='flex gap-3 items-center'>
+                            <Label/>
+                            <BsFlag/>
+                    </div>
           </section>
 
       </div>
