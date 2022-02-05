@@ -4,7 +4,7 @@ import {GrAdd} from 'react-icons/gr'
 import TaskCard from './TaskCard'
 import AddTask from './AddTask'
 
-
+import Schedule from './Schedule'
 
 export default function Main() {
     
