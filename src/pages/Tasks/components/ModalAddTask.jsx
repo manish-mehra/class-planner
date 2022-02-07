@@ -3,16 +3,17 @@
 import {useState} from 'react'
 import {AiOutlineSchedule} from 'react-icons/ai'
 import {MdOutlineLabel} from 'react-icons/md'
-import {BsFlag} from 'react-icons/bs'
 
 
 import Label from './Label'
 import DatePickerButton from './DatePickerButton'
+import Flag from './Flag'
 
 export default function ModalAddTask({showModal}) {
 
     const [showLabel, setShowLabel] = useState(false)
-
+    const [flagged,setFlagged] = useState(false)
+    
   return (
       <div 
       className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'
@@ -38,7 +39,9 @@ export default function ModalAddTask({showModal}) {
                         <DatePickerButton/>
                     <div className='flex gap-3 items-center'>                        
                         <Label/>
-                        <BsFlag/>
+                        <span onClick={()=>setFlagged((prev)=>!prev)}>
+                            <Flag flagged= {flagged}/>
+                        </span>
                     </div>
 
                 </section>

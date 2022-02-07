@@ -1,14 +1,20 @@
 // Add Task: embedded inside main container
 
+import {useState} from 'react'
+
 import {AiOutlineSchedule} from 'react-icons/ai'
 import {MdOutlineLabel} from 'react-icons/md'
-import {BsFlag} from 'react-icons/bs'
+
 
 import Label from './Label'
 import DatePickerButton from './DatePickerButton'
+import Flag from './Flag'
 
 export default function AddTask() {
+
+    const [flagged,setFlagged] = useState(false)
     
+
     return(
       <div className='flex flex-col mt-3 border border-gray-900 p-3 rounded-md'>
           <section className='flex flex-col mb-5'>
@@ -26,7 +32,9 @@ export default function AddTask() {
                         <DatePickerButton/>
                     <div className='flex gap-3 items-center'>
                             <Label/>
-                            <BsFlag/>
+                            <span onClick={()=>setFlagged((prev)=>!prev)}>
+                                <Flag flagged= {flagged}/>
+                            </span>
                     </div>
           </section>
 
