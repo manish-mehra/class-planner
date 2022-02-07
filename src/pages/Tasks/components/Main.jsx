@@ -9,15 +9,19 @@ import AddTask from './AddTask'
 export default function Main() {
     
     const [addTodo, setAddTodo] = useState(false)
-    const [tasks, setTasks] = useState([1, 2])
+    const [tasks, setTasks] = useState([])
+    
 
+    const addTaskHandler = (task)=>{
+        setTasks((prev)=>[...prev, task])
+    }
   return (
     <div className='mt-10 flex-col'>
         <ul>
             {
-                tasks.map((task)=>
-                    <li key={task}>
-                        <TaskCard/>
+                tasks?.map((task)=>
+                    <li key={task.id}>
+                        <TaskCard task = {task}/>
                     </li>
                 )
             }
@@ -25,12 +29,12 @@ export default function Main() {
             {
                 addTodo? (
                     <>
-                        <AddTask/>
-                        <section className='flex gap-3 mt-4'>
+                        <AddTask addTask = {addTaskHandler} cancelTask = {()=>setAddTodo((prev)=>!prev)}/>
+                        {/* <section className='flex gap-3 mt-4'>
                             <span className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'>Add Todo</span>
                             <span className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'
                                 onClick={()=>setAddTodo((prev)=>!prev)}>Cancel</span>
-                        </section>
+                        </section> */}
                     </>
                     
                 ):

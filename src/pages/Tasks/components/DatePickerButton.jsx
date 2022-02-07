@@ -6,9 +6,9 @@ import "react-datepicker/dist/react-datepicker.css"
 
 import {AiOutlineSchedule} from 'react-icons/ai'
 
-export default function DatePickerButton() {
+export default function DatePickerButton({date, onDateChange}) {
 
-    const [startsDate, setStartDate] = useState(new Date());
+
     const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
         <div 
             className='hover:bg-green-200 p-1 rounded-md border border-gray-300 cursor-pointer relative'
@@ -27,8 +27,8 @@ export default function DatePickerButton() {
   return (
     <div>
         <DatePicker
-            selected={startsDate}
-            onChange={(date) => setStartDate(date)}
+            selected={date}
+            onChange={(d) => onDateChange(d)}
             customInput={<ExampleCustomInput />}
         />
     </div>
