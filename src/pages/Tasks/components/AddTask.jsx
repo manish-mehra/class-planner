@@ -80,7 +80,7 @@ export default function AddTask({addTask, cancelTask}) {
                     </div>
           </section>
 
-          <section className='flex gap-3 mt-4 absolute -bottom-16 -left-0.5'>
+          <section className='flex gap-3 mt-4 absolute -bottom-12 -left-0.4'>
             <span 
             className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'
             onClick={onAddTask}

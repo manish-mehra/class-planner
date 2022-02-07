@@ -16,8 +16,9 @@ export default function TaskCard({task}) {
     <div className='flex flex-col mt-3 border border-gray-200 p-3 rounded-md shadow-sm'>
           <section className='flex flex-col mb-5'>
                 <div className='flex justify-between'>
-                    <span className='outline-none mb-1 text-sm font-semibold'>
-                        {title}
+                    <span className='outline-none mb-1 flex items-center gap-1'>
+                        <input type="checkbox"/>
+                        <p className='text-sm font-semibold'>{title}</p>
                     </span>
                     <div className='flex gap-1'>
                     {flagged?

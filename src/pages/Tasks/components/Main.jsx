@@ -16,7 +16,7 @@ export default function Main() {
         setTasks((prev)=>[...prev, task])
     }
   return (
-    <div className='mt-10 flex-col'>
+    <div className='mt-10 mb-6 flex-col h-4/5 overflow-y-auto scrollbar-thin'>
         <ul>
             {
                 tasks?.map((task)=>
@@ -42,7 +42,7 @@ export default function Main() {
                     <li
                     onClick={()=>setAddTodo((prev)=> !prev)}
                     className='flex items-center gap-1 group cursor-pointer mt-3'>
-                    <p className='rounded-xl p-1 group-hover:bg-green-400'><GrAdd/></p>
+                    <p className='rounded-xl p-1 group-hover:bg-green-300'><GrAdd/></p>
                     <p className='group-hover:text-green-700'>Add Task</p>
                 </li>
                 )
