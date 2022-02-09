@@ -3,7 +3,17 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 
 import {BsThreeDotsVertical} from 'react-icons/bs'
 
-export default function TaskMenu() {
+import { useTaskContext } from '../context'
+
+export default function TaskMenu({task}) {
+
+  const {tasks, setTasks} = useTaskContext()
+
+  const deleteTaskHandler = (task)=>{
+    const newTasks = tasks.filter((todo)=> todo.id !== task.id)
+    setTasks(newTasks)
+  }
+
   return (
     
       <Menu as="div" className="relative inline-block text-left">
@@ -68,6 +78,10 @@ export default function TaskMenu() {
                     className={`${
                       active ? 'bg-green-100' : 'text-gray-900'
                     } group flex items-center w-full px-2 py-2 text-sm`}
+                    onClick = {(e)=>{
+                      e.preventDefault()
+                      deleteTaskHandler(task)
+                    }}
                   >
                     Delete
                   </button>

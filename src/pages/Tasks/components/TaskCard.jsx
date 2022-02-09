@@ -27,7 +27,7 @@ export default function TaskCard({task,taskStatusHandler}) {
                     <div className='flex gap-1'>
                     {flagged?
                         <BsFillFlagFill fill='green'/> : null}
-                        <TaskMenu/>
+                        <TaskMenu task = {task}/>
                     </div>
                 </div>
                 <span 
