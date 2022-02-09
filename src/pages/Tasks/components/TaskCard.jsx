@@ -2,6 +2,7 @@ import React from 'react'
 import {format, isToday} from 'date-fns'
 
 import Flag from './Flag'
+import TaskMenu from './TaskMenu'
 
 import {BsThreeDotsVertical} from 'react-icons/bs'
 import {BsFlag} from 'react-icons/bs'
@@ -26,7 +27,7 @@ export default function TaskCard({task,taskStatusHandler}) {
                     <div className='flex gap-1'>
                     {flagged?
                         <BsFillFlagFill fill='green'/> : null}
-                        <BsThreeDotsVertical/>
+                        <TaskMenu/>
                     </div>
                 </div>
                 <span 
