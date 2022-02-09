@@ -24,6 +24,19 @@ export default function TaskMenu({task}) {
     setTasks(newTasks)
   }
 
+  const markCompletedHandler = (e)=>{
+    e.preventDefault()
+    const status = task.status
+    const newTask = {...task, status: !status}
+    const newTasks = tasks.filter((todo)=> todo.id !== task.id)
+    newTasks.push(newTask)
+
+    //show only incomplete task
+    setTasks(()=>
+    newTasks.filter((task)=>task.status !== true)
+   )
+  }
+
   return (
     
       <Menu as="div" className="relative inline-block text-left">
@@ -50,6 +63,7 @@ export default function TaskMenu({task}) {
                     className={`${
                       active ? 'bg-green-100' : 'text-gray-900'
                     } group flex items-center w-full px-2 py-2 text-sm`}
+                    onClick = {markCompletedHandler}
                   >
                     Mark as completed
                   </button>
@@ -66,7 +80,7 @@ export default function TaskMenu({task}) {
                     onClick = {flagTaskHandler}
                   >
                     
-                    Flag
+                    {task.flag? 'Flag': 'Unflag'}
                   </button>
                 )}
               </Menu.Item>
