@@ -4,12 +4,13 @@ import {GrAdd} from 'react-icons/gr'
 import TaskCard from './TaskCard'
 import AddTask from './AddTask'
 
+import { useTaskContext } from '../context'
 
 
 export default function Main() {
     
     const [addTodo, setAddTodo] = useState(false)
-    const [tasks, setTasks] = useState([])
+    const {tasks, setTasks} = useTaskContext()
 
     const addTaskHandler = (task)=>{
         setTasks((prev)=>[...prev, task])
@@ -45,11 +46,6 @@ export default function Main() {
                 addTodo? (
                     <>
                         <AddTask addTask = {addTaskHandler} cancelTask = {()=>setAddTodo((prev)=>!prev)}/>
-                        {/* <section className='flex gap-3 mt-4'>
-                            <span className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'>Add Todo</span>
-                            <span className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'
-                                onClick={()=>setAddTodo((prev)=>!prev)}>Cancel</span>
-                        </section> */}
                     </>
                     
                 ):
