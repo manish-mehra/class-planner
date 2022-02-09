@@ -4,7 +4,7 @@ import Main from './components/Main'
 
 export default function index() {
   return (
-    <div className='flex-col px-52 mb-20 overflow-hidden'>
+    <div className='flex-col px-52 mb-20'>
         <Header/>
         <Main/>
     </div>

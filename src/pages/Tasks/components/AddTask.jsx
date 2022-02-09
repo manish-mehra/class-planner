@@ -40,7 +40,8 @@ export default function AddTask({addTask, cancelTask}) {
             description,
             date,
             label,
-            flagged
+            flagged,
+            status: false
         })
         setTitle('')
         setDescription('')
@@ -53,7 +54,7 @@ export default function AddTask({addTask, cancelTask}) {
     }
 
     return(
-      <div className='flex flex-col mt-3 border border-gray-900 p-3 rounded-md'>
+      <div className='flex flex-col mt-3 border border-gray-900 p-3 rounded-md relative'>
           <section className='flex flex-col mb-5'>
                 <input type="text"
                     placeholder="e.g., Finish english homework"
@@ -80,7 +81,7 @@ export default function AddTask({addTask, cancelTask}) {
                     </div>
           </section>
 
-          <section className='flex gap-3 mt-4'>
+          <section className='flex gap-3 mt-4 absolute -bottom-14 left-0'>
             <span 
             className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'
             onClick={onAddTask}

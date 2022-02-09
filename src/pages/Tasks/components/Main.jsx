@@ -10,10 +10,25 @@ export default function Main() {
     
     const [addTodo, setAddTodo] = useState(false)
     const [tasks, setTasks] = useState([])
-    
 
     const addTaskHandler = (task)=>{
         setTasks((prev)=>[...prev, task])
+    }
+
+    const taskStatusHandler = (task, event)=>{
+
+        if(event.target.checked === true){
+            const filteredTasks = tasks.filter((todo)=> todo.id !== task.id)
+            const newTask = {...task, status: true}
+            filteredTasks.push(newTask)
+            setTasks(()=>
+             filteredTasks.filter((task)=>task.status !== true)
+            )
+        }else{
+            console.log("something went wrong")
+        }
+        
+
     }
   return (
     <div className='mt-10 flex-col h-4/5'>
@@ -21,7 +36,7 @@ export default function Main() {
             {
                 tasks?.map((task)=>
                     <li key={task.id}>
-                        <TaskCard task = {task}/>
+                        <TaskCard task = {task} taskStatusHandler = {taskStatusHandler}/>
                     </li>
                 )
             }
