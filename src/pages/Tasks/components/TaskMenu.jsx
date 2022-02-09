@@ -1,13 +1,17 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment} from 'react'
 
 import {BsThreeDotsVertical} from 'react-icons/bs'
 
 import { useTaskContext } from '../context'
+import EditTask from './EditTask'
 
 export default function TaskMenu({task}) {
 
-  const {tasks, setTasks} = useTaskContext()
+  const {tasks, setTasks, editTaskModal, setEditTaskModal} = useTaskContext()
+
+
+
 
   const deleteTaskHandler = (e)=>{
     e.preventDefault()
@@ -39,7 +43,8 @@ export default function TaskMenu({task}) {
 
   return (
     
-      <Menu as="div" className="relative inline-block text-left">
+      <>
+        <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex justify-center w-full p-1 text-sm font-medium text-white hover:bg-green-200 bg-opacity-20  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
           <BsThreeDotsVertical className='text-black'/>
@@ -80,7 +85,7 @@ export default function TaskMenu({task}) {
                     onClick = {flagTaskHandler}
                   >
                     
-                    {task.flag? 'Flag': 'Unflag'}
+                    {task.flagged? 'Unflag': 'Flag'}
                   </button>
                 )}
               </Menu.Item>
@@ -90,6 +95,7 @@ export default function TaskMenu({task}) {
                     className={`${
                       active ? 'bg-green-100' : 'text-gray-900'
                     } group flex items-center w-full px-2 py-2 text-sm`}
+                    onClick={()=>setEditTaskModal(true)}
                   >
                     Edit
                   </button>
@@ -113,6 +119,10 @@ export default function TaskMenu({task}) {
           </Menu.Items>
         </Transition>
       </Menu>
+
+      {editTaskModal? <EditTask task = {task}/>: null}
+      
+      </>
     
   )
 }

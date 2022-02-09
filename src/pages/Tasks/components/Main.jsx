@@ -7,6 +7,7 @@ import AddTask from './AddTask'
 import { useTaskContext } from '../context'
 
 
+
 export default function Main() {
     
     const [addTodo, setAddTodo] = useState(false)
@@ -32,7 +33,8 @@ export default function Main() {
 
     }
   return (
-    <div className='mt-10 flex-col h-4/5'>
+    <>
+        <div className='mt-10 flex-col h-4/5'>
         <ul>
             {
                 tasks?.map((task)=>
@@ -61,5 +63,6 @@ export default function Main() {
             }
         </ul>
     </div>
+    </>
   )
 }
