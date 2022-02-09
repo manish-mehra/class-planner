@@ -9,8 +9,18 @@ export default function TaskMenu({task}) {
 
   const {tasks, setTasks} = useTaskContext()
 
-  const deleteTaskHandler = (task)=>{
+  const deleteTaskHandler = (e)=>{
+    e.preventDefault()
     const newTasks = tasks.filter((todo)=> todo.id !== task.id)
+    setTasks(newTasks)
+  }
+
+  const flagTaskHandler = (e)=>{
+    e.preventDefault()
+    const flagged = task.flagged
+    const newTask = {...task, flagged: !flagged}
+    const newTasks = tasks.filter((todo)=> todo.id !== task.id)
+    newTasks.push(newTask)
     setTasks(newTasks)
   }
 
@@ -53,6 +63,7 @@ export default function TaskMenu({task}) {
                     className={`${
                       active ? 'bg-green-100' : 'text-gray-900'
                     } group flex items-center w-full px-2 py-2 text-sm`}
+                    onClick = {flagTaskHandler}
                   >
                     
                     Flag
@@ -78,10 +89,7 @@ export default function TaskMenu({task}) {
                     className={`${
                       active ? 'bg-green-100' : 'text-gray-900'
                     } group flex items-center w-full px-2 py-2 text-sm`}
-                    onClick = {(e)=>{
-                      e.preventDefault()
-                      deleteTaskHandler(task)
-                    }}
+                    onClick = {deleteTaskHandler}
                   >
                     Delete
                   </button>
