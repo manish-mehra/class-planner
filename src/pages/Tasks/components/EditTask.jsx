@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useRef, useEffect} from 'react'
 
 import { useTaskContext } from '../context'
 
@@ -7,9 +7,10 @@ import Label from './Label'
 import DatePickerButton from './DatePickerButton'
 import Flag from './Flag'
 
-export default function EditTask({task}) {
+export default function EditTask({task, editModal, modalHandler}) {
 
-    const {editTaskModal, setEditTaskModal,tasks, setTasks} = useTaskContext()
+
+    const {tasks, setTasks} = useTaskContext()
     const [title, setTitle] = useState(task.title)
     const [description, setDescription] = useState(task.description)
     const [date, setDate] = useState(new Date(task.date))
@@ -41,7 +42,7 @@ export default function EditTask({task}) {
         setFlagged(false)
 
         // close modal
-        setEditTaskModal(false)
+        modalHandler(false)
     }
 
 
@@ -60,14 +61,14 @@ export default function EditTask({task}) {
         }
     }
 
-  
+
   return (
     <>
-      <Transition appear show={editTaskModal} as={Fragment}>
+      <Transition appear show={editModal} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-10 overflow-y-auto "
-          onClose={()=>setEditTaskModal(false)}
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={()=>modalHandler(false)}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
@@ -98,14 +99,13 @@ export default function EditTask({task}) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
+              <div  className="inline-block w-full max-w-md p-6 my-8 overflow text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
                 <Dialog.Title
                   as="h2"
                   className="text-lg font-medium leading-6 text-gray-900 mb-5"
                 >
                   Edit Task
                 </Dialog.Title> 
-
                 <div className='flex flex-col mt-3 bg-white'>
             
                     <section className='flex flex-col mb-5'>
@@ -148,7 +148,7 @@ export default function EditTask({task}) {
                     <button
                         type="button"
                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-green-900 bg-green-200 border border-transparent rounded-md hover:bg-green-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                        onClick={()=>setEditTaskModal(false)}
+                        onClick={()=>modalHandler(false)}
                     >
                         Cancel
                     </button>

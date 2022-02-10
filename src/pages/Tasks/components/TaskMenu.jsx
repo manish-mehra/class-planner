@@ -1,14 +1,20 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment} from 'react'
+import { Fragment, useEffect, useState} from 'react'
 
 import {BsThreeDotsVertical} from 'react-icons/bs'
 
 import { useTaskContext } from '../context'
 import EditTask from './EditTask'
 
+
 export default function TaskMenu({task}) {
 
   const {tasks, setTasks, editTaskModal, setEditTaskModal} = useTaskContext()
+  const [editModal, setEditModal] = useState(false)
+
+  const modalHandler = modalStatus=>{
+    setEditModal(modalStatus)
+  }
 
 
 
@@ -95,11 +101,13 @@ export default function TaskMenu({task}) {
                     className={`${
                       active ? 'bg-green-100' : 'text-gray-900'
                     } group flex items-center w-full px-2 py-2 text-sm`}
-                    onClick={()=>setEditTaskModal(true)}
+                    onClick={()=>modalHandler(true)}
                   >
                     Edit
                   </button>
                 )}
+              
+                
               </Menu.Item>
             </div>
             <div>
@@ -115,12 +123,14 @@ export default function TaskMenu({task}) {
                   </button>
                 )}
               </Menu.Item>
+ 
+              
             </div>
           </Menu.Items>
         </Transition>
       </Menu>
 
-      {editTaskModal? <EditTask task = {task}/>: null}
+      {editModal? <EditTask task={task} editModal = {editModal} modalHandler = {modalHandler}/>: null}
       
       </>
     

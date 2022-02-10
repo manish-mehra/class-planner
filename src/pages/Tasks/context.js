@@ -4,11 +4,9 @@ const TaskContext = createContext()
 
 const TaskProvider = ({children})=>{
     const [tasks, setTasks] = useState([])
-    const [editTaskModal, setEditTaskModal] = useState(false)
-
+    
     return <TaskContext.Provider value = {{
-        tasks, setTasks,
-        editTaskModal, setEditTaskModal
+        tasks, setTasks
     }}>
         {children}
     </TaskContext.Provider>
