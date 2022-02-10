@@ -7,6 +7,7 @@ import {
 //importing routes
 import Overview from '../../pages/Overview'
 import Agenda from '../../pages/Agenda'
+import Timetable from '../../pages/Timetable'
 import Assignments from '../../pages/Assignments'
 import Exams from '../../pages/Exams'
 import Semesters from '../../pages/Semesters'
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<PageLayout />} >
             <Route index path = "/" element = {<Overview/>}/>
             <Route path="/agenda" element={<Agenda />}/>
+            <Route path="/timetable" element={<Timetable />}/>
             <Route path="/assignments" element={<Assignments />}/>
             <Route path="/exams" element={<Exams />}/>
             <Route path="/semesters" element={<Semesters />}/>
