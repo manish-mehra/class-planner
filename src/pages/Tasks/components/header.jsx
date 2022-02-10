@@ -4,7 +4,7 @@ import {BsSearch} from 'react-icons/bs'
 import {GrAdd} from 'react-icons/gr'
 
 //import components
-import ModalAddTask from './ModalAddTask'
+import AddTaskModal from './AddTaskModal'
 import FilterTasks from './FilterTasks'
 
 export default function Header() {
@@ -17,7 +17,7 @@ export default function Header() {
         {
             addTask? 
                 <div>
-                    <ModalAddTask showModal = {setAddTask}/>
+                    <AddTaskModal showModal = {setAddTask} isModal = {addTask}/>
                 </div>
             : null
         }

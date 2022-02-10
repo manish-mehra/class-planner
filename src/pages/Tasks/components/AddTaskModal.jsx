@@ -1,16 +1,17 @@
-// Add Task Modal Component
-
-import {useState} from 'react'
-import {AiOutlineSchedule} from 'react-icons/ai'
-import {MdOutlineLabel} from 'react-icons/md'
+import { Dialog, Transition } from '@headlessui/react'
+import { Fragment, useState, useRef, useEffect} from 'react'
 
 import { useTaskContext } from '../context'
+
+import {AiOutlineSchedule} from 'react-icons/ai'
+import {MdOutlineLabel} from 'react-icons/md'
 
 import Label from './Label'
 import DatePickerButton from './DatePickerButton'
 import Flag from './Flag'
 
-export default function ModalAddTask({showModal}) {
+export default function EditTask({showModal, isModal}) {
+
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -56,17 +57,49 @@ export default function ModalAddTask({showModal}) {
         showModal((prev)=>!prev)
     }
     
+
+
   return (
-      <div 
-      className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'
-    
-      >
-        <div 
-        className='w-1/3 flex flex-col justify-between bg-white border border-gray-200 rounded-md shadow-2xl relative">'
+    <>
+      <Transition appear show={isModal} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-10 overflow-y-auto"
+          onClose={()=>showModal(false)}
         >
-    {/* top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 */}
-            <div className='flex-col justify-between p-3'>
-                <section className='flex flex-col mb-14'>
+          <div className="min-h-screen px-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Dialog.Overlay className="fixed inset-0" />
+            </Transition.Child>
+
+            {/* This element is to trick the browser into centering the modal contents. */}
+            <span
+              className="inline-block h-screen align-middle"
+              aria-hidden="true"
+            >
+              &#8203;
+            </span>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
+            >
+              <div  className="inline-block w-full max-w-md my-8 overflow text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
+
+            <div className='flex-col justify-between'>
+                <section className='flex flex-col mb-14 p-2'>
                         <input type="text"
                             placeholder="e.g., Finish english homework"
                             className='outline-none mb-3 text-sm font-semibold'
@@ -81,7 +114,7 @@ export default function ModalAddTask({showModal}) {
                         />
                 </section>
 
-                <section className='flex justify-between items-center mb-2'>                    
+                <section className='flex justify-between items-center mb-2 p-2'>                    
                     <DatePickerButton date = {date} onDateChange= {onDateChange}/>
                     <div className='flex gap-3 items-center'>                        
                         <Label  label = {label} onLabelSelect = {onLabelSelect}/>
@@ -93,7 +126,7 @@ export default function ModalAddTask({showModal}) {
                 </section>
             </div>
 
-            <div className='p-3 pt-5 border border-transparent border-t-1 border-t-gray-400'>
+            <div className='p-2 pt-5 border border-transparent border-t-1 border-t-gray-400'>
                 <section className='flex gap-3'>
                     <span 
                     className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'
@@ -102,8 +135,13 @@ export default function ModalAddTask({showModal}) {
                     <span className='text-sm font-semibold p-1 border border-gray-400 rounded-sm hover:bg-green-200 cursor-pointer'
                     onClick={()=>showModal((prev)=>!prev)}>Cancel</span>           
                 </section>
-            </div>
         </div>
-    </div>
+
+              </div>  
+            </Transition.Child>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
   )
 }
