@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 
 import {BsSearch} from 'react-icons/bs'
-import {FiFilter} from 'react-icons/fi'
 import {GrAdd} from 'react-icons/gr'
 
 //import components
 import ModalAddTask from './ModalAddTask'
+import FilterTasks from './FilterTasks'
 
 export default function Header() {
 
@@ -47,7 +47,7 @@ export default function Header() {
                     />
                 </span>
                 <div className='ml-6'>
-                <FiFilter className='text-lg'/>
+                <FilterTasks/>
                 </div>
             </div>
 

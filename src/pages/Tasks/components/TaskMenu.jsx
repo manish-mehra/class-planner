@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useEffect, useState} from 'react'
+import { Fragment, useState} from 'react'
 
 import {BsThreeDotsVertical} from 'react-icons/bs'
 
@@ -9,7 +9,7 @@ import EditTask from './EditTask'
 
 export default function TaskMenu({task}) {
 
-  const {tasks, setTasks, editTaskModal, setEditTaskModal} = useTaskContext()
+  const {tasks, setTasks} = useTaskContext()
   const [editModal, setEditModal] = useState(false)
 
   const modalHandler = modalStatus=>{
@@ -66,8 +66,7 @@ export default function TaskMenu({task}) {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
-            <div>
-              
+            <div>  
               <Menu.Item>
                 {({ active }) => (
                   <button
