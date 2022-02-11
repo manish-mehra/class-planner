@@ -8,8 +8,8 @@ Class Planner is a web app specifically designed for students to manage their cl
 ## Project status: V1
 ### styling
 
-- [X] Task Manager
-- [X] Subjects
+- [X] Task Manager 02/10/2022
+- [X] Subjects 02/11/2022
 - [ ] Teachers
 - [ ] Timetable
 - [ ] Assignments
