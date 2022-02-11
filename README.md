@@ -9,7 +9,7 @@ Class Planner is a web app specifically designed for students to manage their cl
 ### styling
 
 - [X] Task Manager
-- [ ] Subjects
+- [X] Subjects
 - [ ] Teachers
 - [ ] Timetable
 - [ ] Assignments
