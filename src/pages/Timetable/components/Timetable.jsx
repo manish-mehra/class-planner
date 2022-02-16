@@ -1,13 +1,22 @@
 import React,{useState} from 'react'
 
 import TimetabelStructureData from './TimetableStructureData'
+import { GrAdd } from 'react-icons/gr'
+
+import AddPeriod from './AddPeriod'
 
 export default function Timetable() {
 
     const [timetableStruct, setTimetableStruct] = useState(TimetabelStructureData)
+    const [addPeriod, setAddPeriod] = useState(false)
 
   return (
     <div>
+        {
+            addPeriod?
+                <AddPeriod addPeriod = {addPeriod} setAddPeriod = {setAddPeriod}/>
+                :null
+        }
 
         <div>
 
@@ -46,11 +55,13 @@ export default function Timetable() {
                                     return (
                                         <div
                                         key={day.day}
-                                        className="h-20 w-28 border border-gray-400 cursor-pointer flex justify-center"
+                                        className="relative h-20 w-28 border border-gray-200 cursor-pointer flex justify-center hover:bg-green-200 group"
                                         onClick={()=>{
                                             console.log(timetable.time,day.day)
+                                            setAddPeriod(true)
                                         }}
                                         >
+                                        <GrAdd className='absolute top-1/2 z-10 opacity-0 hover:opacity-100 text-2xl'/>
                                         <p>{day.subject.name}</p>
                                         </div>
                                     )
