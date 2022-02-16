@@ -40,7 +40,7 @@ export default function index() {
         Assignment 
       </Link>
       <Link to = "/exams" 
-      className='flex items-center gap-2 px- py-2 text-gray-800 hover:bg-green-300 group font-semibold text-sm'>
+      className='flex items-center gap-2 px-2 py-2 text-gray-800 hover:bg-green-300 group font-semibold text-sm'>
         <BsPen/>
         Exams  
       </Link>
