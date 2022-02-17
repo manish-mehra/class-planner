@@ -1,20 +1,45 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 
 import TimetabelStructureData from './TimetableStructureData'
+import { useTimetableContext } from '../context'
 import { GrAdd } from 'react-icons/gr'
 
 import AddPeriod from './AddPeriod'
 
+import { selectColor } from '../../../helpers'
+
 export default function Timetable() {
 
     const [timetableStruct, setTimetableStruct] = useState(TimetabelStructureData)
-    const [addPeriod, setAddPeriod] = useState(false)
+    const [addPeriodModal, setAddPeriodModal] = useState(false)
+    const [selectedTime, setSelectedTime] = useState('')
+    const [selectedDay, setSelectedDay] = useState('')
+
+    const [timeTableSubject, setTimetableSubject] = useState({})
+
+    const addTimetableSubjectHandler = (subj)=>{
+        const timeIndex = timetableStruct.findIndex((el)=> el.time === selectedTime)
+        const dayIndex = timetableStruct[timeIndex].weekday.findIndex((el)=> el.day === selectedDay)
+
+        setTimetableStruct(()=>{
+            let newTimeStruct = timetableStruct
+            newTimeStruct[timeIndex].weekday[dayIndex].subject = subj
+            return newTimeStruct
+        })
+        setAddPeriodModal(false)
+
+
+    }
 
   return (
     <div>
         {
-            addPeriod?
-                <AddPeriod addPeriod = {addPeriod} setAddPeriod = {setAddPeriod}/>
+            addPeriodModal?
+                <AddPeriod 
+                addTimetableSubject={addTimetableSubjectHandler} 
+                timeTableSubject = {timeTableSubject}
+                addPeriodModal = {addPeriodModal} 
+                setAddPeriodModal = {setAddPeriodModal}/>
                 :null
         }
 
@@ -55,14 +80,16 @@ export default function Timetable() {
                                     return (
                                         <div
                                         key={day.day}
-                                        className="relative h-20 w-28 border border-gray-200 cursor-pointer flex justify-center hover:bg-green-200 group"
+                                        className={`relative h-20 w-28 border border-gray-200 cursor-pointer flex justify-center items-center hover:bg-green-50 group ${selectColor(day.subject.color)}`}
                                         onClick={()=>{
-                                            console.log(timetable.time,day.day)
-                                            setAddPeriod(true)
+                                            setSelectedTime(()=>timetable.time)
+                                            setSelectedDay(()=>day.day)
+                                            setTimetableSubject(day.subject)
+                                            setAddPeriodModal(true)
                                         }}
                                         >
                                         <GrAdd className='absolute top-1/2 z-10 opacity-0 hover:opacity-100 text-2xl'/>
-                                        <p>{day.subject.name}</p>
+                                        <p className='font-semibold text-gray-600'>{day.subject.name}</p>
                                         </div>
                                     )
                                 })}

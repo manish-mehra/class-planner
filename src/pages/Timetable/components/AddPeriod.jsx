@@ -5,22 +5,41 @@ import { useTimetableContext } from '../context'
 import Subjects from './Subjects'
 import ColorPicker from './ColorPicker'
 
+import { isEmptyObject } from '../../../helpers'
 
-export default function AddPeriod({addPeriod, setAddPeriod}) {
+export default function AddPeriod({ timeTableSubject,addTimetableSubject, addPeriodModal, setAddPeriodModal}) {
 
     const [addExisting, setAddExisting] = useState(false)
     const [subject, setSubject] = useState({})
     
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [color, setColor] = useState('')
+    const [name, setName] = useState(timeTableSubject.name || '')
+    const [description, setDescription] = useState(timeTableSubject.description || '')
+    const [color, setColor] = useState(timeTableSubject.color || '')
 
 
     const addPeriodHandler = (e)=>{
         e.preventDefault()
 
-        // close modal
-        setAddPeriod(false)
+        if(name && color){
+          addTimetableSubject({
+            name,
+            description,
+            color
+          })
+          // close modal
+          setAddPeriodModal(false)
+          return
+        }
+
+        if(!isEmptyObject(subject)){
+          addTimetableSubject(subject)
+
+          // close modal
+          setAddPeriodModal(false)
+          return
+        }
+        
+        
     }
 
     const pickSubjectHandler = (sub)=>{
@@ -36,11 +55,11 @@ export default function AddPeriod({addPeriod, setAddPeriod}) {
 
   return (
     <>
-      <Transition appear show={addPeriod} as={Fragment}>
+      <Transition appear show={addPeriodModal} as={Fragment}>
         <Dialog
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={()=>setAddPeriod(false)}
+          onClose={()=>setAddPeriodModal(false)}
         >
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
@@ -82,18 +101,22 @@ export default function AddPeriod({addPeriod, setAddPeriod}) {
                     <section className='flex flex-col mb-4'>
                             {
                                 addExisting?
-                                     <Subjects pickSubject = {pickSubjectHandler}/>
+                                     <Subjects subject={subject} pickSubject = {pickSubjectHandler}/>
                                 :
                                 <div className='flex flex-col mb-4'>
                                     <input type="text"
                                     placeholder="Pick a subject"
                                     className='outline-none mb-2 text-sm font-semibold' 
+                                    value={name}
+                                    onChange = {(e)=> setName(e.target.value)}
                                     />
                                     <input type="text" 
                                     placeholder="Description"
                                     className='outline-none text-xs'
+                                    value={description}
+                                    onChange = {(e)=> setDescription(e.target.value)}
                                     />
-                                    <ColorPicker pickColor={pickColorHandler}/>
+                                    <ColorPicker color = {color} pickColor={pickColorHandler}/>
                                 </div>
                             }
                             <label htmlFor="addfromexistingsubject" className='flex items-center justify-between'>
@@ -126,7 +149,7 @@ export default function AddPeriod({addPeriod, setAddPeriod}) {
                     <button
                         type="button"
                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-green-900 bg-green-200 border border-transparent rounded-md hover:bg-green-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                        onClick={()=>setAddPeriod(false)}
+                        onClick={()=>setAddPeriodModal(false)}
                     >
                         Cancel
                     </button>

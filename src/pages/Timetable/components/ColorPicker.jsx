@@ -3,7 +3,7 @@ import { Fragment, useState} from 'react'
 
 import { selectColor } from '../../../helpers'
 
-export default function ColorPicker({pickColor}) {
+export default function ColorPicker({color, pickColor}) {
 
     
     const colors = ['red', 'blue', 'yellow', 'green', 'orange', 'gray', 'pink', 'purple']
@@ -12,7 +12,8 @@ return (
     <>
     <Menu as="div" className="relative inline-block text-left">
     <div>
-      <Menu.Button className="flex items-center gap-1 w-full p-1 text-sm font-normal text-gray-600 hover:bg-green-100 bg-opacity-20  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+      <Menu.Button className="flex items-center gap-1 w-full py-1 text-sm font-normal text-gray-600 hover:bg-green-100 bg-opacity-20  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+        {color? <div  className={`w-3 h-3 ${selectColor(color)}`}></div>: null}
         <p>Pick a color</p>
       </Menu.Button>
     </div>
