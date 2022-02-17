@@ -10,8 +10,6 @@ import { useTimetableContext } from '../context'
 export default function Subjects({subject, pickSubject}) {
 
     const {subjects, setSubjects} = useTimetableContext()
-    
-    console.log(isEmptyObject(subject))
 
 return (
     <>

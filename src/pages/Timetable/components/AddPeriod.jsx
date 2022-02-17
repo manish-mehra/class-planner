@@ -44,12 +44,10 @@ export default function AddPeriod({ timeTableSubject,addTimetableSubject, addPer
 
     const pickSubjectHandler = (sub)=>{
         setSubject(()=>sub)
-        console.log(sub)
     }
 
     const pickColorHandler = (color)=>{
         setColor(color)
-        console.log(color)
     }
 
 
