@@ -1,6 +1,8 @@
 import React,{useState, useContext, createContext} from 'react'
+import TimetabelStructureData from './components/TimetableStructureData'
 
 const TimetableContext = createContext()
+
 
 const sub = [
     {
@@ -32,9 +34,13 @@ const sub = [
 
 const TimetableProvider = ({children})=>{
     const [subjects, setSubjects] = useState(sub)
-    
+    const [currentTimetable, setCurrentTimetable] = useState(TimetabelStructureData || [])
+    const [timetables, setTimetables] = useState([])
+
     return <TimetableContext.Provider value = {{
-        subjects, setSubjects
+        currentTimetable, setCurrentTimetable,
+        subjects, setSubjects,
+        timetables, setTimetables
     }}>
         {children}
     </TimetableContext.Provider>

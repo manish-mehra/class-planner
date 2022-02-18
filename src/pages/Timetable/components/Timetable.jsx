@@ -1,16 +1,13 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState} from 'react'
 
-import TimetabelStructureData from './TimetableStructureData'
 import { useTimetableContext } from '../context'
-import { GrAdd } from 'react-icons/gr'
-
 import AddPeriod from './AddPeriod'
-
 import { selectColor } from '../../../helpers'
 
 export default function Timetable() {
 
-    const [timetableStruct, setTimetableStruct] = useState(TimetabelStructureData)
+
+    const {currentTimetable, setCurrentTimetable} = useTimetableContext()
     const [addPeriodModal, setAddPeriodModal] = useState(false)
     const [selectedTime, setSelectedTime] = useState('')
     const [selectedDay, setSelectedDay] = useState('')
@@ -18,11 +15,11 @@ export default function Timetable() {
     const [timeTableSubject, setTimetableSubject] = useState({})
 
     const addTimetableSubjectHandler = (subj)=>{
-        const timeIndex = timetableStruct.findIndex((el)=> el.time === selectedTime)
-        const dayIndex = timetableStruct[timeIndex].weekday.findIndex((el)=> el.day === selectedDay)
+        const timeIndex = currentTimetable.findIndex((el)=> el.time === selectedTime)
+        const dayIndex = currentTimetable[timeIndex].weekday.findIndex((el)=> el.day === selectedDay)
 
-        setTimetableStruct(()=>{
-            let newTimeStruct = timetableStruct
+        setCurrentTimetable(()=>{
+            let newTimeStruct = currentTimetable
             newTimeStruct[timeIndex].weekday[dayIndex].subject = subj
             return newTimeStruct
         })
@@ -66,12 +63,12 @@ export default function Timetable() {
 
 
             {
-                timetableStruct.map((timetable)=>{
+                currentTimetable.map((timetable)=>{
                     return (
                         <div 
                         className='flex gap-1'
                         key = {timetable.time}>
-                            <section className='h-10 w-12 flex items-start text-sm font-semibold'>
+                            <section className='h-10 w-12 flex items-start text-xs font-semibold'>
                                 <p className='text-gray-600'>{timetable.time}</p>
                             </section>
 
