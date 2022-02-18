@@ -96,41 +96,41 @@ export default function AddPeriod({ timeTableSubject,addTimetableSubject, addPer
                   Add Subject
                 </Dialog.Title> 
                 <div className='flex flex-col mt-3 bg-white'>         
-                    <section className='flex flex-col mb-4'>
+                    <section className='flex flex-col'>
                             {
                                 addExisting?
                                      <Subjects subject={subject} pickSubject = {pickSubjectHandler}/>
                                 :
-                                <div className='flex flex-col mb-4'>
+                                <div className='flex flex-col'>
                                     <input type="text"
                                     placeholder="Pick a subject"
-                                    className='outline-none mb-2 text-sm font-semibold' 
+                                    className='outline-none focus:border-b-2 border-gray-50 mb-2 text-sm font-semibold' 
                                     value={name}
                                     onChange = {(e)=> setName(e.target.value)}
                                     />
                                     <input type="text" 
                                     placeholder="Description"
-                                    className='outline-none text-xs'
+                                    className='outline-none mb-2 text-xs focus:border-b-2 border-gray-50'
                                     value={description}
                                     onChange = {(e)=> setDescription(e.target.value)}
                                     />
                                     <ColorPicker color = {color} pickColor={pickColorHandler}/>
                                 </div>
                             }
-                            <label htmlFor="addfromexistingsubject" className='flex items-center justify-between'>
+                            <section className='flex items-center gap-3'>
                                 
-                                <p className='text-sm'>Add from existing subjects</p>
                                 <input 
-                                    type="checkbox" name="add existing"
-                                    onChange={(e)=>{
-                                        if(!e.target.checked){
-                                            setAddExisting(false)
-                                        }else{
-                                            setAddExisting(true)
-                                        }
-                                    }}
-                                    />
-                            </label>
+                                      type="checkbox" id="add-existing"
+                                      onChange={(e)=>{
+                                          if(!e.target.checked){
+                                              setAddExisting(false)
+                                          }else{
+                                              setAddExisting(true)
+                                          }
+                                      }}
+                                      />
+                                  <label for = "add-existing" className='text-xs font-semibold cursor-pointer py-1'>Add from existing subjects</label>
+                            </section>
                     </section>
                 </div>
 

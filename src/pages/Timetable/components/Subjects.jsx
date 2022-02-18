@@ -15,7 +15,7 @@ return (
     <>
     <Menu as="div" className="relative inline-block text-left">
     <div>
-      <Menu.Button className="flex items-center gap-1 w-full p-1 text-sm font-medium text-gray-600 hover:bg-green-100 bg-opacity-20  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+      <Menu.Button className="flex items-center gap-1 mb-2 w-full text-sm font-medium text-gray-600 bg-opacity-20  focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
         
         {isEmptyObject(subject)?
         <>

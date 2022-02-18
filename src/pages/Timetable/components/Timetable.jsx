@@ -46,8 +46,8 @@ export default function Timetable() {
         <div>
 
             <div className='flex gap-4'>
-                <section className='w-12 mb-4'>
-                    
+                <section className='w-14 mb-4'>
+                {/*  empty space*/}
                 </section>
 
                     <section className='flex'>
@@ -57,7 +57,7 @@ export default function Timetable() {
                                 key={day.day}
                                 className="w-28 mb-4"
                                 >
-                                <p className="">{day}</p>
+                                <p className="text-sm font-semibold text-gray-600">{day}</p>
                                 </div>
                             )
                         })}
@@ -69,10 +69,10 @@ export default function Timetable() {
                 timetableStruct.map((timetable)=>{
                     return (
                         <div 
-                        className='flex gap-4'
+                        className='flex gap-1'
                         key = {timetable.time}>
-                            <section className='h-20 w-12 flex items-start'>
-                                <p>{timetable.time}</p>
+                            <section className='h-10 w-12 flex items-start text-sm font-semibold'>
+                                <p className='text-gray-600'>{timetable.time}</p>
                             </section>
 
                             <section className='flex'>
@@ -80,7 +80,7 @@ export default function Timetable() {
                                     return (
                                         <div
                                         key={day.day}
-                                        className={`relative h-20 w-28 border border-gray-200 cursor-pointer flex justify-center items-center hover:bg-green-50 group ${selectColor(day.subject.color)}`}
+                                        className={`relative h-10 w-28 border drop-shadow-md border-gray-200 cursor-pointer flex justify-center items-center hover:bg-gray-50 group ${selectColor(day.subject.color)}`}
                                         onClick={()=>{
                                             setSelectedTime(()=>timetable.time)
                                             setSelectedDay(()=>day.day)
@@ -88,8 +88,8 @@ export default function Timetable() {
                                             setAddPeriodModal(true)
                                         }}
                                         >
-                                        <GrAdd className='absolute top-1/2 z-10 opacity-0 hover:opacity-100 text-2xl'/>
-                                        <p className='font-semibold text-gray-600'>{day.subject.name}</p>
+                                        {/* <GrAdd className='absolute top-1/2 z-10 opacity-0 hover:opacity-100 text-2xl'/> */}
+                                        <p className='font-semibold text-gray-600 text-sm'>{day.subject.name}</p>
                                         </div>
                                     )
                                 })}
