@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState, useRef, useEffect} from 'react'
+import { Fragment, useState} from 'react'
 import CreateTimetable from './CreateTimetable'
 import { useTimetableContext } from '../context'
 
@@ -9,7 +9,7 @@ import {AiOutlineTable} from 'react-icons/ai'
 export default function ManageTimetables({setModal, isModal}) {
 
     const [createTimetableModal, setCreateTimetableModal] = useState(false)
-    const {currentTimetable, setCurrentTimetable, timetables} = useTimetableContext()
+    const {setCurrentTimetable, timetables} = useTimetableContext()
 
     const changeTimetableHandler = (name)=>{
         const timetablesIndex = timetables.findIndex((el)=> el.name === name)

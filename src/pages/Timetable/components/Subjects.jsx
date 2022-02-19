@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useState} from 'react'
+import { Fragment} from 'react'
 
 import { selectColor, isEmptyObject } from '../../../helpers'
 
@@ -9,7 +9,7 @@ import { useTimetableContext } from '../context'
 
 export default function Subjects({subject, pickSubject}) {
 
-    const {subjects, setSubjects} = useTimetableContext()
+    const {subjects} = useTimetableContext()
 
 return (
     <>

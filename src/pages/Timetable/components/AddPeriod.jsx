@@ -1,7 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState, useRef, useEffect} from 'react'
+import { Fragment, useState} from 'react'
 
-import { useTimetableContext } from '../context'
 import Subjects from './Subjects'
 import ColorPicker from './ColorPicker'
 
