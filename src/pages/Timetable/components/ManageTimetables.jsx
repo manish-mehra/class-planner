@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState} from 'react'
+import { Fragment, useState, useRef} from 'react'
 import CreateTimetable from './CreateTimetable'
 import { useTimetableContext } from '../context'
 
@@ -8,6 +8,7 @@ import {AiOutlineTable} from 'react-icons/ai'
 
 export default function ManageTimetables({setModal, isModal}) {
 
+    let refDiv = useRef(null)
     const [createTimetableModal, setCreateTimetableModal] = useState(false)
     const {setCurrentTimetable, timetables} = useTimetableContext()
 
@@ -23,9 +24,10 @@ export default function ManageTimetables({setModal, isModal}) {
           as="div"
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={()=>setModal(false)}
+          initialFocus = {refDiv}
         >
             
-          <div className="min-h-screen px-4 text-center">
+          <div className="min-h-screen px-4 text-center" ref = {refDiv}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -77,7 +79,8 @@ export default function ManageTimetables({setModal, isModal}) {
                         {
                             timetables.map((el)=>{
                                 return <label
-                                htmlFor={el.name} 
+                                htmlFor={el.name}
+                                key = {el.name} 
                                 className='flex justify-between items-center mb-2 cursor-pointer hover:bg-green-50'>
                                     <span 
                                     

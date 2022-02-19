@@ -1,5 +1,5 @@
 import { Menu, Transition, Dialog, } from '@headlessui/react'
-import { Fragment, useState} from 'react'
+import { Fragment, useState, useRef} from 'react'
 
 import { useTimetableContext } from '../context'
 import {AiOutlineTable} from 'react-icons/ai'
@@ -8,6 +8,7 @@ import {isEmptyObject} from '../../../helpers'
 
 export default function SwitchTimetable({isModal, setModal}) {
 
+    let refDiv = useRef(null)
     const {currentTimetable, setCurrentTimetable, timetables} = useTimetableContext()
 
     const changeTimetableHandler = (timetableName)=>{
@@ -20,11 +21,12 @@ return (
       <Transition appear show={isModal} as={Fragment}>
         <Dialog
           as="div"
+          initialFocus={refDiv}
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={()=>setModal(false)}
         >
             
-          <div className="min-h-screen px-4 text-center">
+          <div className="min-h-screen px-4 text-center" ref={refDiv}>
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -53,13 +55,13 @@ return (
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div  className="inline-block p-4 w-full max-w-md my-8 overflow text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
-              <Dialog.Title
-                  as="h2"
-                  className="text-lg font-medium leading-6 text-gray-900 mb-5"
-                >
-                  Choose Timetable
-            </Dialog.Title> 
+              <div className="inline-block p-4 w-full max-w-md my-8 overflow text-left align-middle transition-all transform bg-white shadow-xl rounded-lg">
+                <Dialog.Title
+                      as="h2"
+                      className="text-lg font-medium leading-6 text-gray-900 mb-5"
+                    >
+                      Choose Timetable
+                </Dialog.Title> 
 
                 {isEmptyObject(timetables)?
                     <div>
@@ -71,7 +73,8 @@ return (
                         {
                             timetables.map((el)=>{
                                 return <label
-                                for={el.name} 
+                                htmlFor={el.name} 
+                                key = {el.name}
                                 className='flex justify-between items-center mb-2 cursor-pointer hover:bg-green-50'>
                                     <span 
                                     
