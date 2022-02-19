@@ -43,14 +43,15 @@ return (
       <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
         <div>  
           {
-              subjects.map((subject)=>
-                <Menu.Item>
+              subjects.map((subject, index)=>
+                <Menu.Item key = {index + subject}>
                     {({ active }) => (
                     <button
                         className={`${
                         active ? 'bg-green-100' : 'text-gray-900'
                         } group flex items-center gap-2 w-full px-2 py-2 text-sm`}
                         onClick = {()=>pickSubject(subject)}
+                        
                         
                     >
                         <div className={`w-3 h-3 ${selectColor(subject.color)}`}></div>

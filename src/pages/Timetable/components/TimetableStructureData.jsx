@@ -716,7 +716,7 @@ let TimetabelStructureData = [
           subject: {
             id: '',
             name: '',
-            description: 'trigo, stats, probablity',
+            description: '',
             color: ''
           }
         },

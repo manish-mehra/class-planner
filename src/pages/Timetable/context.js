@@ -34,7 +34,7 @@ const sub = [
 
 const TimetableProvider = ({children})=>{
     const [subjects, setSubjects] = useState(sub)
-    const [currentTimetable, setCurrentTimetable] = useState(TimetabelStructureData || [])
+    const [currentTimetable, setCurrentTimetable] = useState(TimetabelStructureData)
     const [timetables, setTimetables] = useState([])
 
     return <TimetableContext.Provider value = {{

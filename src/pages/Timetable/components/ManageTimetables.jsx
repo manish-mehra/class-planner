@@ -77,7 +77,7 @@ export default function ManageTimetables({setModal, isModal}) {
                         {
                             timetables.map((el)=>{
                                 return <label
-                                for={el.name} 
+                                htmlFor={el.name} 
                                 className='flex justify-between items-center mb-2 cursor-pointer hover:bg-green-50'>
                                     <span 
                                     

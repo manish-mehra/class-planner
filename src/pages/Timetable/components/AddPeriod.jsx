@@ -129,7 +129,7 @@ export default function AddPeriod({ timeTableSubject,addTimetableSubject, addPer
                                           }
                                       }}
                                       />
-                                  <label for = "add-existing" className='text-xs font-semibold cursor-pointer py-1'>Add from existing subjects</label>
+                                  <label htmlFor="add-existing" className='text-xs font-semibold cursor-pointer py-1'>Add from existing subjects</label>
                             </section>
                     </section>
                 </div>

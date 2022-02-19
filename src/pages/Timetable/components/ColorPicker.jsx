@@ -30,14 +30,13 @@ return (
         <div>  
           {
               colors.map((color)=>
-                <Menu.Item>
+                <Menu.Item key = {color}>
                     {({ active }) => (
                     <button
                         className={`${
                         active ? 'bg-green-100' : 'text-gray-900'
                         } group flex items-center gap-2 w-full px-2 py-2 text-sm`}
                         onClick = {()=>pickColor(color)}
-                        
                     >
                         <div className={`w-3 h-3 ${selectColor(color)}`}></div>
                         <p>{color}</p>

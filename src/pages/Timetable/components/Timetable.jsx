@@ -51,7 +51,7 @@ export default function Timetable() {
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => {
                             return (
                                 <div
-                                key={day.day}
+                                key={day}
                                 className="w-28 mb-4"
                                 >
                                 <p className="text-sm font-semibold text-gray-600">{day}</p>
