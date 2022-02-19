@@ -714,10 +714,10 @@ let TimetabelStructureData = [
         {
           day: "Monday",
           subject: {
-            id: '1',
-            name: 'Maths',
+            id: '',
+            name: '',
             description: 'trigo, stats, probablity',
-            color: 'red'
+            color: ''
           }
         },
         {
