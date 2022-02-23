@@ -13,6 +13,7 @@ export default function AddAssignment({showModal, isModal}) {
     const [description, setDescription] = useState('')
     const [subject, setSubject] = useState({})
     const [date, setDate] = useState(new Date())
+    const [status, setStatus] = useState(false)
 
     
 
@@ -31,6 +32,7 @@ export default function AddAssignment({showModal, isModal}) {
         const assign = {
             id: Math.random(),
             subject,
+            status,
             date,
             name,
             description

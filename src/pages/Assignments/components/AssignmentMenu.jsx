@@ -12,7 +12,7 @@ export default function AssignmentMenu({assignment}) {
 
   const {assignments, setAssignments} = useAssignmentContext()
   const [editModal, setEditModal] = useState(false)
-
+  const [status, setStatus] = useState(assignment.status || false)
   const modalHandler = modalStatus=>{
     setEditModal(modalStatus)
   }
@@ -21,6 +21,15 @@ export default function AssignmentMenu({assignment}) {
     e.preventDefault()
     const newAssignments = assignments.filter((assg)=> assg.id !== assignment.id)
     setAssignments(newAssignments)
+  }
+
+  const markAsCompletedHandler = (e)=>{
+    e.preventDefault()
+    setStatus(prev=>!prev)
+    const assignmentIndex = assignments.findIndex((el)=>el.id === assignment.id)
+    let newAssignments = assignments
+    newAssignments[assignmentIndex].status = true
+    setAssignments(newAssignments.filter((el)=> el.status !== true))
   }
 
   return (
@@ -42,6 +51,22 @@ export default function AssignmentMenu({assignment}) {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+
+          <div>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? 'bg-green-100' : 'text-gray-900'
+                    } group flex items-center w-full px-2 py-2 text-sm`}
+                    onClick={markAsCompletedHandler}
+                  >
+                    Mark as Completed
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+
             <div>
               <Menu.Item>
                 {({ active }) => (
@@ -69,8 +94,6 @@ export default function AssignmentMenu({assignment}) {
                   </button>
                 )}
               </Menu.Item>
- 
-              
             </div>
           </Menu.Items>
         </Transition>
