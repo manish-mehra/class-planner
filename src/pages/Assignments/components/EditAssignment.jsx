@@ -3,6 +3,7 @@ import { Fragment, useState} from 'react'
 
 import { useAssignmentContext } from '../context'
 import PickSubject from './PickSubject'
+import DatePickerButton from './DatePickerButton'
 
 export default function EditAssignment({assignment, editModal, modalHandler}) {
 
@@ -11,6 +12,11 @@ export default function EditAssignment({assignment, editModal, modalHandler}) {
     const [name, setName] = useState(assignment.name)
     const [description, setDescription] = useState(assignment.description)
     const [subject, setSubject] = useState(assignment.subject || {})
+    const [date, setDate] = useState(assignment.date || new Date())
+
+    const onDateChange = (d)=>{
+      setDate(d)
+    }
 
 
     const updateAssignmentHandler = (e)=>{
@@ -20,6 +26,7 @@ export default function EditAssignment({assignment, editModal, modalHandler}) {
         const updatedAssignment = {
             id: Math.random(),
             subject,
+            date,
             name,
             description
         }
@@ -97,6 +104,9 @@ export default function EditAssignment({assignment, editModal, modalHandler}) {
                                 onChange = {(e)=>setDescription(e.target.value)}
                             />
                             <PickSubject subject={subject} pickSubjectHandler = {pickSubjectHandler}/>
+                            <div className='flex'>
+                              <DatePickerButton date = {date} onDateChange = {onDateChange}/>
+                            </div>
                     </section>
                 </div>
 

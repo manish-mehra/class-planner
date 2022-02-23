@@ -2,6 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState} from 'react'
 
 import { useAssignmentContext } from '../context'
+import DatePickerButton from './DatePickerButton'
 import PickSubject from './PickSubject'
 
 export default function AddAssignment({showModal, isModal}) {
@@ -11,9 +12,16 @@ export default function AddAssignment({showModal, isModal}) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [subject, setSubject] = useState({})
+    const [date, setDate] = useState(new Date())
+
+    
 
     const pickSubjectHandler = (sub)=>{
       setSubject(()=>sub)
+    }
+
+    const onDateChange = (d)=>{
+      setDate(d)
     }
 
 
@@ -23,6 +31,7 @@ export default function AddAssignment({showModal, isModal}) {
         const assign = {
             id: Math.random(),
             subject,
+            date,
             name,
             description
         }
@@ -78,7 +87,7 @@ export default function AddAssignment({showModal, isModal}) {
                 >
                   Add Assignment
                 </Dialog.Title> 
-                <div className='flex flex-col mt-3 bg-white'>         
+                <div className='flex-col mt-3 bg-white'>         
                     <section className='flex flex-col mb-4'>
                             <input type="text"
                                 placeholder="e.g., English"
@@ -93,6 +102,10 @@ export default function AddAssignment({showModal, isModal}) {
                                 onChange = {(e)=>setDescription(e.target.value)}
                             />
                             <PickSubject subject ={subject} pickSubjectHandler = {pickSubjectHandler}/>
+                            <div className='flex'>
+                              <DatePickerButton date = {date} onDateChange = {onDateChange}/>
+                            </div>
+                           
                     </section>
                 </div>
 
