@@ -2,25 +2,31 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState} from 'react'
 
 import { useAssignmentContext } from '../context'
-
+import PickSubject from './PickSubject'
 
 export default function AddAssignment({showModal, isModal}) {
 
 
-    const {setAssignments} = useAssignmentContext()
+    const {setAssignments, setSubjects} = useAssignmentContext()
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
+    const [subject, setSubject] = useState({})
+
+    const pickSubjectHandler = (sub)=>{
+      setSubject(()=>sub)
+    }
 
 
     const addAssignmentHandler = (e)=>{
         e.preventDefault()
 
-        const subject = {
+        const assign = {
             id: Math.random(),
+            subject,
             name,
             description
         }
-        setAssignments((prev)=>[...prev, subject])
+        setAssignments((prev)=>[...prev, assign])
         setName('')
         setDescription('')
         // close modal
@@ -86,6 +92,7 @@ export default function AddAssignment({showModal, isModal}) {
                                 value = {description}
                                 onChange = {(e)=>setDescription(e.target.value)}
                             />
+                            <PickSubject subject ={subject} pickSubjectHandler = {pickSubjectHandler}/>
                     </section>
                 </div>
 
