@@ -11,8 +11,8 @@ Class Planner is a web app specifically designed for students to manage their cl
 - [X] Task Manager 02/10/2022
 - [X] Subjects 02/11/2022
 - [ ] Teachers
-- [ ] Timetable
-- [ ] Assignments
+- [X] Timetable 02/17/2022
+- [X] Assignments 02/23/2022
 - [ ] Exams
 - [ ] Agenda
 - [ ] Overview
