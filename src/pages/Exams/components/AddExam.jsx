@@ -38,6 +38,7 @@ export default function AddExam({showModal, isModal}) {
         setExams((prev)=>[...prev, exam])
         setName('')
         setDate(new Date())
+        setSubject({})
         // close modal
         showModal((prev)=>!prev)
     }
