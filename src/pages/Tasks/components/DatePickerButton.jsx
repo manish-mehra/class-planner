@@ -30,6 +30,8 @@ export default function DatePickerButton({date, onDateChange}) {
             selected={date}
             onChange={(d) => onDateChange(d)}
             customInput={<ExampleCustomInput />}
+            calendarClassName = "custom-react-datepicker"
+        
         />
     </div>
   )
